@@ -38,7 +38,7 @@ type Enrollment struct {
 }
 
 func main() {
-	dsn := "host=localhost user=zaen password=zaen dbname=team_project port=5432 sslmode=disable TimeZone=Asia/Jakarta"
+	dsn := "host=containers-us-west-31.railway.app user=postgres password=iyAOHU97Nv1OPQnaWWma dbname=railway port=6996 sslmode=disable TimeZone=Asia/Jakarta"
 	DB, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
 	if err != nil {
@@ -467,5 +467,5 @@ func main() {
 		})
 	})
 
-	app.Listen(":9090")
+	app.Listen(":8080")
 }
