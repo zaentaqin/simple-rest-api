@@ -180,13 +180,6 @@ func main() {
 
 	app.Get("/class", func(c *fiber.Ctx) error {
 		class := []Class{}
-		if err != nil {
-			return c.Status(http.StatusBadRequest).JSON(fiber.Map{
-				"success": false,
-				"message": err.Error(),
-				"data":    nil,
-			})
-		}
 
 		if result := DB.Find(&class); result.RowsAffected != 0 {
 			return c.JSON(fiber.Map{
@@ -195,7 +188,7 @@ func main() {
 				"data":    class,
 			})
 		}
-		return c.Status(http.StatusBadRequest).JSON(fiber.Map{
+		return c.Status(http.StatusNotFound).JSON(fiber.Map{
 			"success": false,
 			"message": err.Error(),
 			"data":    nil,
