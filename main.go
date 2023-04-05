@@ -15,18 +15,18 @@ import (
 
 type User struct {
 	gorm.Model
-	FullName string   `json:"fullname"`
-	Email    string   `json:"email"`
-	Password string   `json:"password"`
-	Class    []*Class `gorm:"many2many:user_class;"`
+	FullName string `json:"fullname"`
+	Email    string `json:"email"`
+	Password string `json:"password"`
+	//Class    []*Class `gorm:"many2many:user_class;"`
 }
 
 type Class struct {
 	gorm.Model
-	Name       string  `json:"name"`
-	Level      string  `json:"level"`
-	Instructor string  `json:"instructor"`
-	User       []*User `gorm:"many2many:class_user;"`
+	Name       string `json:"name"`
+	Level      string `json:"level"`
+	Instructor string `json:"instructor"`
+	//User       []*User `gorm:"many2many:class_user;"`
 }
 
 type Enrollment struct {
