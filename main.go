@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/golang-jwt/jwt/v4"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -47,6 +48,7 @@ func main() {
 
 	DB.AutoMigrate(&User{}, &Class{}, &Enrollment{})
 	app := fiber.New()
+	app.Use(cors.New())
 
 	authMiddleware := func(c *fiber.Ctx) error {
 		tokenRequest := c.Get("Authorization")
