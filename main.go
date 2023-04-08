@@ -19,7 +19,6 @@ type User struct {
 	FullName string `json:"fullname"`
 	Email    string `json:"email"`
 	Password string `json:"password"`
-	//Class    []*Class `gorm:"many2many:user_class;"`
 }
 
 type Class struct {
@@ -27,7 +26,6 @@ type Class struct {
 	Name       string `json:"name"`
 	Level      string `json:"level"`
 	Instructor string `json:"instructor"`
-	//User       []*User `gorm:"many2many:class_user;"`
 }
 
 type Enrollment struct {
@@ -104,7 +102,7 @@ func main() {
 		}
 
 		if result := DB.Where("email = ?", register.Email).First(&register); result.RowsAffected != 0 {
-			return c.Status(http.StatusNotFound).JSON(fiber.Map{
+			return c.Status(http.StatusBadRequest).JSON(fiber.Map{
 				"message": "Email not already registered",
 			})
 		}
