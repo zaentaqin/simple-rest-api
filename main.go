@@ -116,7 +116,7 @@ func main() {
 
 	})
 
-	app.Get("/login", func(c *fiber.Ctx) error {
+	app.Post("/login", func(c *fiber.Ctx) error {
 		loginRequest := User{}
 		if err = c.BodyParser(&loginRequest); err != nil {
 			return c.Status(http.StatusBadRequest).JSON(fiber.Map{
